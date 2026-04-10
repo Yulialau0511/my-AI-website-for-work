@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI+校招每日资讯简报 | 2026-04-07（星期二）第 001 期</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:#f0f2f5;color:#333;line-height:1.8;min-height:100vh;display:flex;flex-direction:column}
+  a{color:#4f46e5;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .top-bar{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;padding:16px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+  .top-bar h1{font-size:20px;letter-spacing:4px;font-weight:700}
+  .top-bar .sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .top-bar .credit{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:2px}
+  .top-bar .credit strong{color:rgba(255,255,255,.7);font-weight:500}
+
+  .layout{display:flex;flex:1}
+
+  /* ===== 左侧日期栏 ===== */
+  .sidebar{width:200px;min-width:200px;background:#fff;border-right:1px solid #e5e7eb;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;overflow-x:hidden;z-index:50;flex-shrink:0}
+  .sidebar::-webkit-scrollbar{width:4px}
+  .sidebar::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:2px}
+  .sidebar-header{padding:16px 14px 10px;border-bottom:1px solid #f0f0f0}
+  .sidebar-header h3{font-size:13px;font-weight:700;color:#374151;letter-spacing:1px}
+  .sidebar-header .sidebar-desc{font-size:11px;color:#9ca3af;margin-top:2px}
+  .sidebar-year{padding:10px 14px 4px;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:.5px;text-transform:uppercase}
+
+  .date-item{display:flex;align-items:center;gap:8px;padding:9px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;user-select:none}
+  .date-item:hover{background:#f5f3ff;border-left-color:#c4b5fd}
+  .date-item.active{background:#ede9fe;border-left-color:#6d28d9}
+  .date-item .date-num{font-size:20px;font-weight:700;color:#1e1b4b;min-width:32px;text-align:center;line-height:1}
+  .date-item .date-info{display:flex;flex-direction:column}
+  .date-item .date-weekday{font-size:12px;font-weight:600;color:#4b5563}
+  .date-item.active .date-weekday{color:#5b21b6}
+  .date-item .date-label{font-size:10px;color:#9ca3af;margin-top:1px}
+  .date-item.active .date-label{color:#7c3aed}
+  .date-item .date-dot{width:6px;height:6px;border-radius:50%;background:#d1d5db;flex-shrink:0}
+  .date-item.active .date-dot{background:#6d28d9;box-shadow:0 0 6px rgba(109,40,217,.4)}
+  .date-item.today .date-num{color:#6d28d9}
+  .date-item.today::after{content:"TODAY";font-size:9px;font-weight:700;color:#fff;background:#6d28d9;padding:1px 5px;border-radius:3px;margin-left:auto}
+
+  /* ===== 右侧主内容 ===== */
+  .main-wrap{flex:1;min-width:0;overflow:hidden}
+  .main-container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+  .toc a{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;transition:all .2s}
+  .toc a:nth-child(1){background:#ede9fe;color:#6d28d9}
+  .toc a:nth-child(2){background:#e0f2fe;color:#0369a1}
+  .toc a:nth-child(3){background:#dcfce7;color:#15803d}
+  .toc a:nth-child(4){background:#fce7f3;color:#be185d}
+  .toc a:nth-child(5){background:#fee2e2;color:#b91c1c}
+  .toc a:nth-child(6){background:#e0e7ff;color:#3730a3}
+  .toc a:nth-child(7){background:#fef3c7;color:#b45309}
+  .toc a:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.12);text-decoration:none}
+
+  .current-date-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6d28d9,#4f46e5);color:#fff;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
+
+  .section{background:#fff;border-radius:14px;padding:28px 28px 24px;margin-bottom:22px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .section-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #f0f0f0}
+  .section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .section-header h2{font-size:18px;font-weight:700;color:#1a1a2e}
+  .section-header .section-desc{font-size:12px;color:#999;margin-left:auto}
+
+  .sources{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:4px;margin-bottom:8px}
+  .source-link{display:inline-flex;align-items:center;gap:3px;font-size:11px;color:#4f46e5;background:#f0f0ff;padding:2px 8px;border-radius:10px;white-space:nowrap;transition:all .15s;border:1px solid #e0e0ff}
+  .source-link:hover{background:#e0e7ff;border-color:#c7d2fe;color:#3730a3;text-decoration:none}
+  .source-link svg{width:10px;height:10px;flex-shrink:0}
+
+  .headline-card{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:transform .2s}
+  .headline-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(109,40,217,.1)}
+  .headline-card .card-title{font-size:15px;font-weight:700;color:#312e81;margin-bottom:6px}
+  .headline-card .card-date{font-size:11px;color:#7c3aed;margin-bottom:4px}
+  .headline-card .card-body{font-size:13.5px;color:#444;margin-bottom:10px}
+  .headline-card .card-explain{font-size:12.5px;color:#5b21b6;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:10px 14px;border-radius:0 8px 8px 0}
+  .headline-card .card-explain strong{color:#4c1d95}
+
+  .hot-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;overflow:hidden;border-radius:10px;border:1px solid #e5e7eb}
+  .hot-table th{background:#1e293b;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:12.5px;letter-spacing:.5px}
+  .hot-table td{padding:11px 14px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+  .hot-table tr:last-child td{border-bottom:none}
+  .hot-table tr:hover td{background:#f8fafc}
+  .hot-table .event-name{font-weight:600;color:#1e293b}
+  .hot-table .table-sources{display:flex;flex-wrap:wrap;gap:3px 6px;margin-top:4px}
+  .hot-table .table-src{font-size:10.5px;color:#4f46e5;background:#f0f0ff;padding:1px 6px;border-radius:8px;white-space:nowrap;border:1px solid #e0e0ff}
+  .hot-table .table-src:hover{background:#e0e7ff;text-decoration:none;color:#3730a3}
+
+  .tool-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #10b981;transition:all .2s}
+  .tool-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .tool-card .tool-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .tool-card .tool-tag{display:inline-block;background:#10b981;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .tool-card .tool-name{font-size:14.5px;font-weight:700;color:#065f46}
+  .tool-card .tool-body{font-size:13px;color:#444;margin-bottom:8px}
+  .tool-card .tool-body ul{padding-left:18px;margin:6px 0}
+  .tool-card .tool-body li{margin-bottom:4px}
+  .tool-card .tool-meaning{font-size:12.5px;color:#047857;background:#ecfdf5;padding:10px 14px;border-radius:8px}
+  .tool-card .tool-meaning strong{color:#065f46}
+
+  .hr-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #a855f7;transition:all .2s}
+  .hr-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .hr-card .hr-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .hr-card .hr-tag{display:inline-block;background:#a855f7;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .hr-card .hr-name{font-size:14.5px;font-weight:700;color:#581c87}
+  .hr-card .hr-body{font-size:13px;color:#444;margin-bottom:8px}
+  .hr-card .hr-body ul,.hr-card .hr-body ol{padding-left:18px;margin:6px 0}
+  .hr-card .hr-body li{margin-bottom:5px}
+  .hr-trend-box{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:1px solid #e9d5ff;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+  .hr-trend-box h3{font-size:14px;font-weight:700;color:#7e22ce;margin-bottom:6px}
+
+  .hr-data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;overflow:hidden;border-radius:8px;border:1px solid #e9d5ff;margin-top:10px}
+  .hr-data-table th{background:#7e22ce;color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:12px}
+  .hr-data-table td{padding:10px 12px;border-bottom:1px solid #f3e8ff;vertical-align:top}
+  .hr-data-table tr:last-child td{border-bottom:none}
+  .hr-data-table tr:hover td{background:#fdf4ff}
+
+  .advice-box{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:10px;padding:16px 20px;font-size:13px;color:#78350f;margin-top:16px}
+  .advice-box strong{color:#92400e}
+
+  .campus-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #ef4444;transition:all .2s}
+  .campus-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .campus-card .campus-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .campus-card .campus-tag{display:inline-block;background:#ef4444;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .campus-card .campus-name{font-size:14.5px;font-weight:700;color:#7f1d1d}
+  .campus-card .campus-body{font-size:13px;color:#444;margin-bottom:8px}
+  .campus-card .campus-body ul,.campus-card .campus-body ol{padding-left:18px;margin:6px 0}
+  .campus-card .campus-body li{margin-bottom:5px}
+
+  .campus-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;overflow:hidden;border-radius:10px;border:1px solid #fecaca;margin:14px 0}
+  .campus-table th{background:#991b1b;color:#fff;padding:10px 10px;text-align:left;font-weight:600;font-size:11.5px}
+  .campus-table td{padding:10px 10px;border-bottom:1px solid #fee2e2;vertical-align:top;line-height:1.7}
+  .campus-table tr:last-child td{border-bottom:none}
+  .campus-table tr:hover td{background:#fef2f2}
+  .campus-table a{color:#4f46e5;font-size:11px}
+
+  .office-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #6366f1;transition:all .2s}
+  .office-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .office-card .office-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .office-card .office-tag{display:inline-block;background:#6366f1;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .office-card .office-name{font-size:14.5px;font-weight:700;color:#312e81}
+  .office-card .office-body{font-size:13px;color:#444;margin-bottom:8px}
+  .office-card .office-body ul{padding-left:18px;margin:6px 0}
+  .office-card .office-body li{margin-bottom:4px}
+  .office-highlight{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+  .office-highlight h3{font-size:14px;font-weight:700;color:#3730a3;margin-bottom:6px}
+
+  .qa-card{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;border-radius:14px;padding:24px;text-align:center}
+  .qa-card .qa-question{font-size:17px;font-weight:700;color:#9a3412;margin-bottom:16px}
+  .qa-card .qa-answer{font-size:14px;color:#7c2d12;text-align:left;line-height:2}
+  .qa-card .qa-answer strong{color:#9a3412}
+
+  .footer{text-align:center;padding:24px 0;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb;margin-top:12px}
+  .footer p{margin-bottom:4px}
+
+  .back-top{position:fixed;bottom:30px;right:30px;width:42px;height:42px;border-radius:50%;background:#302b63;color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);transition:all .2s;opacity:0;pointer-events:none;z-index:90}
+  .back-top.show{opacity:1;pointer-events:auto}
+  .back-top:hover{transform:translateY(-2px);box-shadow:0 5px 18px rgba(0,0,0,.3)}
+
+  /* 加载动画 */
+  .loading{text-align:center;padding:60px 20px;color:#999}
+  .loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #e5e7eb;border-top-color:#6d28d9;border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* 无数据 */
+  .no-data{text-align:center;padding:60px 20px;color:#bbb}
+  .no-data .empty-icon{font-size:48px;margin-bottom:12px;opacity:.5}
+
+  /* 移动端侧边栏 */
+  .sidebar-toggle{display:none;position:fixed;bottom:90px;left:16px;width:44px;height:44px;border-radius:50%;background:#6d28d9;color:#fff;font-size:20px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 14px rgba(109,40,217,.4);z-index:90;transition:all .2s}
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40}
+  .sidebar-overlay.show{display:block}
+
+  @media(max-width:768px){
+    .sidebar{position:fixed;left:-220px;top:56px;height:calc(100vh - 56px);z-index:60;transition:left .3s ease;box-shadow:none}
+    .sidebar.open{left:0;box-shadow:4px 0 20px rgba(0,0,0,.15)}
+    .sidebar-toggle{display:flex}
+    .main-wrap{margin-left:0}
+    .section{padding:18px 16px;border-radius:10px}
+    .main-container{padding:12px 8px 40px}
+  }
+</style>
+
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>AI+校招每日资讯简报</h1>
+  <div class="sub">AI 行业热点 / 人力资源 / 新工具 / 办公软件动态</div>
+  <div class="credit">策划 · 编辑 — <strong>刘小瑜</strong></div>
+</div>
+
+<div class="layout">
+  <!-- 左侧日期栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h3>日期归档</h3>
+      <div class="sidebar-desc">点击查看当日简报</div>
+    </div>
+    <div id="dateList"></div>
+  </aside>
+
+  <!-- 右侧主内容 -->
+  <div class="main-wrap">
+    <div class="main-container" id="mainContent">
+      <div class="section" id="headlines">
+    <div class="section-header">
+      <div class="section-icon" style="background:#ede9fe;">&#x1F525;</div>
+      <h2>今日头条</h2>
+      <span class="section-desc">3 条重磅新闻</span>
+    </div>
+
+    <div class="headline-card">
+      <div class="card-title">1. 智元（AGIBOT）AI 发布周今日正式开幕</div>
+      <div class="card-date">&#x1F4C5; 2026-04-07</div>
+      <div class="sources">
+        <a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-04-03/detail-inhteyhy0348022.d.html" target="_blank" rel="noopener">IT之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://36kr.com/newsflashes/3750530449933064" target="_blank" rel="noopener">36氪<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.jiemian.com/article/14206428.html" target="_blank" rel="noopener">界面新闻<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.163.com/dy/article/KPJ9CM4U05198CJN.html" target="_blank" rel="noopener">网易（财联社）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">国产机器人领军企业智元（AGIBOT）今日正式开启为期一周的"智元 AI 发布周"（4 月 7 日至 14 日）。本次发布周聚焦"具身智能"（让 AI 拥有物理身体，能在现实世界中行动），被业内视为定义"物理 AI"的关键时刻。智元计划在发布周期间每日解锁一项核心技术突破，六天时间展示机器人感知、运动控制、人机交互等多个方向的最新成果。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>如果说目前的 AI 还只是在电脑和手机里"思考"，那么具身智能的目标就是让 AI 走进现实世界——能看、能听、能动手。这次发布周可能会让我们提前看到未来机器人在工厂、家庭中工作的样子。</div>
+    </div>
+
+    <div class="headline-card">
+      <div class="card-title">2. Meta 计划开源最新 AI 模型源代码</div>
+      <div class="card-date">&#x1F4C5; 2026-04-07</div>
+      <div class="sources">
+        <a class="source-link" href="https://m.163.com/dy/article/KPT70G1M0511A6N9.html" target="_blank" rel="noopener">网易（AIPress）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.donews.com/news/detail/8/6499942.html" target="_blank" rel="noopener">DoNews<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">据今日公开信息，美国科技公司 Meta（原 Facebook 母公司）计划向公众开放其最新人工智能模型的源代码版本。此举由 Meta 加州门洛帕克总部主导，面向全球开发者开放。此前，Meta 已于 4 月 1 日正式推出 Llama 4 系列模型，在多项基准测试中表现超越 GPT-4。这次进一步开源源代码，意味着全世界的研究者和企业都可以自由查看、修改和使用 Meta 最前沿的 AI 技术。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>现在大多数顶级 AI 公司（如 OpenAI）把自己的技术藏着掖着，而 Meta 选择了"公开透明"路线。这就好比一家顶级餐厅把独家配方公开了，任何人都可以在此基础上改良和创新。这对推动 AI 技术普及意义重大。</div>
+    </div>
+
+    <div class="headline-card">
+      <div class="card-title">3. 我国人工智能安全标准体系加速构建</div>
+      <div class="card-date">&#x1F4C5; 2026-04-07</div>
+      <div class="sources">
+        <a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-04-07/detail-inhtrqcm7347945.d.html" target="_blank" rel="noopener">新华社《经济参考报》<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://mparticle.uc.cn/article_org.html?uc_param_str=frdnsnpfvecpntnwprdssskt#!wm_cid=745487026914079744" target="_blank" rel="noopener">新华财经（UC）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">今日新华社刊发记者叶健、吴蔚采写的专题报道《AI安全焦点追踪丨我国人工智能安全标准体系加速构建》，指出我国 AI 安全标准体系正在加速完善。此前 3 月 31 日，全国网络安全标准化技术委员会已在珠海召开"人工智能安全标准与应用交流会"，多个重要标准进入加速制定阶段。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>AI 越来越强大，安全风险也越来越受关注。国家正在加紧制定规则，确保 AI 技术在发展中不失控、不滥用，保障每个人的数据安全和隐私权益。</div>
+    </div>
+  </div>
+
+  <!-- 二、行业热点 -->
+  
+<div class="section" id="hotspot">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e0f2fe;">&#x1F4CA;</div>
+      <h2>本周 AI 行业热点速览</h2>
+      <span class="section-desc">5 条动态</span>
+    </div>
+
+    <table class="hot-table">
+      <tr>
+        <th style="width:30%;">事件</th>
+        <th style="width:12%;">日期</th>
+        <th style="width:28%;">一句话解读</th>
+        <th style="width:30%;">来源</th>
+      </tr>
+      <tr>
+        <td><span class="event-name">谷歌发布新一代开源模型 Gemma 4</span></td>
+        <td>4 月 2 日</td>
+        <td>谷歌最聪明的开源 AI 模型，Apache 2.0 授权可全面商用，擅长复杂推理</td>
+        <td>
+          <div class="table-sources">
+            <a class="table-src" href="http://tv.cctv.com/2026/04/04/VIDEHdp41aLOoZOgFZSqjbXw260404.shtml" target="_blank" rel="noopener">央视网</a>
+            <a class="table-src" href="http://www.yicai.com/brief/103118779.html" target="_blank" rel="noopener">第一财经</a>
+            <a class="table-src" href="https://m.toutiao.com/w/1861682819127368/" target="_blank" rel="noopener">今日头条</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="event-name">Cursor 3.0 发布，AI 编程进入"全自动"时代</span></td>
+        <td>4 月 3 日</td>
+        <td>从"人机协作"迈向"智能体自主工作"，多 AI 协作重构开发流程</td>
+        <td>
+          <div class="table-sources">
+            <a class="table-src" href="https://www.sohu.com/a/1004984504_121346472" target="_blank" rel="noopener">搜狐科技</a>
+            <a class="table-src" href="https://m.sohu.com/a/1004944063_120315" target="_blank" rel="noopener">搜狐（AIPress）</a>
+            <a class="table-src" href="http://www.okyn.com/ai/212.html" target="_blank" rel="noopener">OKYN</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="event-name">百度发布国内首个任务型医疗 AI"有医助理"</span></td>
+        <td>4 月 2 日</td>
+        <td>不再只是"回答问题"，而是能帮医生"执行任务"的智能协作者</td>
+        <td>
+          <div class="table-sources">
+            <a class="table-src" href="http://www.techweb.com.cn/news/2026-04-02/2973835_1.shtml" target="_blank" rel="noopener">TechWeb</a>
+            <a class="table-src" href="http://m.zol.com.cn/article/11580055.html" target="_blank" rel="noopener">中关村在线</a>
+            <a class="table-src" href="https://m.chinaz.com/ainews/26798.shtml" target="_blank" rel="noopener">站长之家</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="event-name">AI 编程工具 Qoder 入局，三大模型混战</span></td>
+        <td>4 月 4 日</td>
+        <td>阿里巴巴旗下 Qoder 携三大模型杀入市场，挑战 Cursor 龙头地位</td>
+        <td>
+          <div class="table-sources">
+            <a class="table-src" href="https://m.toutiao.com/w/1861552874613760/" target="_blank" rel="noopener">今日头条</a>
+            <a class="table-src" href="https://developer.aliyun.com/article/1687659" target="_blank" rel="noopener">阿里云开发者</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="event-name">开源大模型"三国争霸"</span></td>
+        <td>4 月 5 日</td>
+        <td>Google、微软、Meta 三大巨头同时发力开源 AI 模型，竞争白热化</td>
+        <td>
+          <div class="table-sources">
+            <a class="table-src" href="https://www.toutiao.com/a7625176058325516854/" target="_blank" rel="noopener">今日头条</a>
+            <a class="table-src" href="https://developer.cloud.tencent.com/article/2650738" target="_blank" rel="noopener">腾讯云开发者</a>
+            <a class="table-src" href="https://m.blog.csdn.net/internetear/article/details/159789756" target="_blank" rel="noopener">CSDN</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 三、AI 新工具推荐 -->
+  
+<div class="section" id="tools">
+    <div class="section-header">
+      <div class="section-icon" style="background:#dcfce7;">&#x1F6E0;</div>
+      <h2>AI 新工具推荐</h2>
+      <span class="section-desc">3 款新工具</span>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="tool-tag">新工具</span>
+        <span class="tool-name">Cursor 3.0 — 全自动 AI 编程助手</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.sohu.com/a/1004984504_121346472" target="_blank" rel="noopener">搜狐科技<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.sohu.com/a/1004944063_120315" target="_blank" rel="noopener">搜狐（AIPress）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="http://www.okyn.com/ai/212.html" target="_blank" rel="noopener">OKYN<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="tool-body">
+        AI 编程领域标杆产品 Cursor 于 4 月 3 日发布 3.0 大版本（代号 Glass），将产品从"带 AI 的代码编辑器"彻底重建为"带编辑器的 Agent 调度台"。核心升级包括：
+        <ul>
+          <li><strong>Design Mode（设计模式）：</strong>直接用自然语言描述你想要的软件界面，AI 自动生成完整的界面设计</li>
+          <li><strong>多智能体并行协作：</strong>多个 AI "程序员"同时工作，像团队协作一样完成复杂项目</li>
+          <li><strong>全自动开发流程：</strong>从写代码、自动测试到一键上线，全流程由 AI 完成</li>
+        </ul>
+      </div>
+      <div class="tool-meaning"><strong>&#x1F3AF; 对普通人的意义：</strong>即使你完全不会编程，未来也可能通过自然语言描述需求，让 AI 帮你做出一个 App。技术门槛正在大幅降低。</div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="tool-tag">新工具</span>
+        <span class="tool-name">百度"有医助理" — 医生专属的 AI 协作者</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="http://www.techweb.com.cn/news/2026-04-02/2973835_1.shtml" target="_blank" rel="noopener">TechWeb<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="http://m.zol.com.cn/article/11580055.html" target="_blank" rel="noopener">中关村在线<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.chinaz.com/ainews/26798.shtml" target="_blank" rel="noopener">站长之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://news.qq.com/rain/a/20260403A01JIB00" target="_blank" rel="noopener">腾讯新闻<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="tool-body">
+        百度健康于 4 月 2 日正式发布的国内首个任务型医疗 AI 助手，基于 Claw 框架研发。不同于以往只能"问答"的医疗 AI，"有医助理"的特点在于：
+        <ul>
+          <li><strong>检索溯源：</strong>每一条建议都标注了医学文献来源，可查可验</li>
+          <li><strong>任务执行：</strong>不仅能回答问题，还能帮医生完成写病历、查阅资料等具体任务</li>
+        </ul>
+      </div>
+      <div class="tool-meaning"><strong>&#x1F3AF; 对普通人的意义：</strong>未来看病时，你的医生身后可能多了一位 AI 助手。它能帮医生更全面地分析病情、查找文献，提升诊疗质量。</div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="tool-tag">新工具</span>
+        <span class="tool-name">Qoder — AI 编程赛道新玩家</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.toutiao.com/w/1861552874613760/" target="_blank" rel="noopener">今日头条<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://developer.aliyun.com/article/1687659" target="_blank" rel="noopener">阿里云开发者<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="tool-body">
+        阿里巴巴旗下 AI 编程平台 Qoder 携三大模型杀入市场，首创"智能代理式编程"，支持自然语言驱动的全栈开发。主打高性价比和灵活的模型切换，AI 编程工具市场竞争日趋激烈。
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、AI + 人力资源 -->
+  
+<div class="section" id="hr">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fce7f3;">&#x1F465;</div>
+      <h2>AI + 人力资源：应用与案例聚焦</h2>
+      <span class="section-desc">3 个趋势 + 案例数据</span>
+    </div>
+
+    <div class="hr-trend-box">
+      <h3>&#x1F4C8; 行业趋势：2026 年——AI 招聘真正成熟的"元年"</h3>
+      <p style="font-size:13px;color:#6b21a8;">业内普遍认为，2026 年是 AI 在人力资源领域从"辅助工具"升级为"核心决策伙伴"的关键节点。</p>
+      <div class="sources" style="margin-top:8px;">
+        <a class="source-link" href="https://www.beisen.com/res/2315.html" target="_blank" rel="noopener" style="color:#7e22ce;background:#f5f0ff;border-color:#e9d5ff;">北森<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.beisen.com/res/2259.html" target="_blank" rel="noopener" style="color:#7e22ce;background:#f5f0ff;border-color:#e9d5ff;">北森（11 家案例）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="hr-card">
+      <div class="hr-header">
+        <span class="hr-tag">HR 应用</span>
+        <span class="hr-name">AI 智能招聘系统：从"筛简历"到"做决策"</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.beisen.com/res/2326.html" target="_blank" rel="noopener" style="color:#581c87;background:#f5f0ff;border-color:#e9d5ff;">北森《2026企业AI招聘实测》<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.beisen.com/res/2208.html" target="_blank" rel="noopener" style="color:#581c87;background:#f5f0ff;border-color:#e9d5ff;">北森《2026年招聘系统排行榜》<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="hr-body">
+        2026 年的 AI 招聘系统已经远不止于自动筛选简历。以北森等 HR SaaS 头部企业的最新实践为例：
+        <ul>
+          <li><strong>AI Agent 协同招聘：</strong>多个 AI 智能体分工协作，一个负责搜索候选人，一个负责初步沟通，一个负责匹配度评估，像一支"AI 招聘团队"</li>
+          <li><strong>自然语言交互：</strong>HR 只需用日常语言描述需求（如"找一个 3 年经验、会 Python、有电商背景的数据分析师"），AI 自动完成全网搜索和精准匹配</li>
+          <li><strong>人效提升 80%：</strong>多家企业实践表明，AI 辅助招聘让招聘周期缩短 60%-80%，显著降低人力成本</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hr-card">
+      <div class="hr-header">
+        <span class="hr-tag">HR 案例</span>
+        <span class="hr-name">北森发布 5 个 AI Agent 在 HR 落地的真实案例</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.sohu.com/a/906536568_121822496/" target="_blank" rel="noopener" style="color:#581c87;background:#f5f0ff;border-color:#e9d5ff;">搜狐（北森报告）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.beisen.com/res/2259.html" target="_blank" rel="noopener" style="color:#581c87;background:#f5f0ff;border-color:#e9d5ff;">北森（11 家案例）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="hr-body">
+        国内 HR SaaS 龙头企业北森总结了消费制造、新能源汽车、物流、科技等行业的 5 个实践案例：
+        <table class="hr-data-table">
+          <tr><th>场景</th><th>AI 做了什么</th><th>效果</th></tr>
+          <tr><td><strong>批量招聘</strong></td><td>AI 自动筛选简历、发起初面邀约、记录面试评价</td><td>招聘效率提升 3-5 倍</td></tr>
+          <tr><td><strong>员工培训</strong></td><td>AI 根据岗位需求自动生成个性化学习计划</td><td>培训覆盖率从 40% 提升至 90%</td></tr>
+          <tr><td><strong>绩效管理</strong></td><td>AI 辅助撰写绩效评语、识别优秀员工</td><td>减少管理者 70% 的文书工作</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="hr-card">
+      <div class="hr-header">
+        <span class="hr-tag">HR 趋势</span>
+        <span class="hr-name">从"效率工具"到"组织智能中枢"</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://developer.baidu.com/article/detail.html?id=6241578" target="_blank" rel="noopener" style="color:#581c87;background:#f5f0ff;border-color:#e9d5ff;">百度开发者中心<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="hr-body">
+        百度开发者中心发布的《2026 人力资源 AI 应用全景：从效率工具到组织智能中枢》报告指出，AI 在 HR 领域的应用正经历三大升级：
+        <ol>
+          <li><strong>从"点状工具"到"全流程智能"：</strong>不再只是某个环节用 AI，而是从招聘、入职、培训、绩效、离职的全生命周期 AI 陪伴</li>
+          <li><strong>从"数据分析"到"智能决策"：</strong>AI 不只告诉你"数据是什么"，还能告诉你"应该怎么做"</li>
+          <li><strong>从"服务 HR"到"服务全员"：</strong>AI 不再只是 HR 的工具，而是每个员工都能随时使用的"职场智能助手"</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="advice-box">
+      <strong>&#x1F4DD; 给 HR 从业者的建议：</strong>2026 年之前，掌握 AI 工具是"加分项"；2026 年之后，不使用 AI 的 HR 将面临被淘汰的风险。建议从最简单的场景入手——先用 AI 辅助撰写 JD（职位描述）、筛选简历、整理面试纪要，逐步建立自己的 AI 工具箱。
+    </div>
+  </div>
+
+  <!-- ====== 五、校园招聘资讯 ====== -->
+  
+<div class="section" id="campus">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fee2e2;">&#x1F393;</div>
+      <h2>校园招聘资讯</h2>
+      <span class="section-desc">招聘规模 / 薪资 / AI 岗位要求变化</span>
+    </div>
+
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag">春招总览</span>
+        <span class="campus-name">2026 春招：AI 岗位激增 14 倍，各大厂抢人大战</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.wondercv.com/blog/D84gWji8.html" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">WonderCV 2026互联网春招盘点<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.blog.csdn.net/2401_85325557/article/details/156652443" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">CSDN 校招大战分析<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.donews.com/news/detail/4/6452432.html" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">DoNews 美团春招<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        2026 年春招季，各大互联网企业招聘策略出现明显变化：<strong>AI 岗位需求激增 14 倍</strong>，成为绝对主力。阿里、京东、字节跳动、美团、小米、滴滴等头部企业累计招聘人数超 <strong>5 万人</strong>，其中 AI 相关岗位占比大幅提升。
+        <br><br>
+        <strong>&#x1F4A1; 通俗解读：</strong>以前大厂校招主要是程序员和产品经理，现在 AI 岗位成了"香饽饽"——不是公司"想招"，而是"必须招"。不会 AI，连传统岗位的竞争力都在下降。
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;">
+    <table class="campus-table">
+      <tr>
+        <th style="width:12%;">企业</th>
+        <th style="width:14%;">招聘规模</th>
+        <th style="width:20%;">AI 岗位占比</th>
+        <th style="width:18%;">AI 岗位薪资</th>
+        <th style="width:36%;">AI 相关要求亮点</th>
+      </tr>
+      <tr>
+        <td><strong>百度</strong></td>
+        <td>大规模扩招</td>
+        <td>AI 岗位占比超 <strong>90%</strong></td>
+        <td>均值约 5-8 万/月</td>
+        <td>全面 AI 化，非技术岗也需 AI 工具使用能力</td>
+      </tr>
+      <tr>
+        <td><strong>阿里巴巴</strong></td>
+        <td>数千人级</td>
+        <td>AI 岗位占比超 <strong>60%</strong></td>
+        <td>均值约 5-7 万/月</td>
+        <td>大模型应用开发能力、通义产品线扩张</td>
+      </tr>
+      <tr>
+        <td><strong>腾讯</strong></td>
+        <td>数千人级</td>
+        <td>AI 岗位占比约 <strong>40%-50%</strong></td>
+        <td>均值约 4.5-7 万/月</td>
+        <td>混元大模型、AI Agent 开发、游戏 AI</td>
+      </tr>
+      <tr>
+        <td><strong>字节跳动</strong></td>
+        <td>数千人级</td>
+        <td>AI 岗位占比约 <strong>45%-55%</strong></td>
+        <td>均值约 5-8 万/月</td>
+        <td>豆包大模型、AI 内容生成、推荐算法</td>
+      </tr>
+      <tr>
+        <td><strong>美团</strong></td>
+        <td>春招补招 <strong>6000 人</strong><br>+实习提前批</td>
+        <td>面向 AI 等前沿技术<br>重点招募</td>
+        <td>均值约 3.5-6 万/月</td>
+        <td>自动驾驶、AI 优化运营效率</td>
+      </tr>
+      <tr>
+        <td><strong>小米</strong></td>
+        <td>数千人级</td>
+        <td>AI 相关需求快速增长</td>
+        <td>均值约 3-5 万/月</td>
+        <td>AIoT、智能汽车、大模型端侧部署</td>
+      </tr>
+      <tr>
+        <td><strong>京东</strong></td>
+        <td>数千人级</td>
+        <td>AI 岗位占比约 <strong>30%-40%</strong></td>
+        <td>均值约 3.5-6 万/月</td>
+        <td>供应链 AI、智能客服、大模型应用</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag">AI 技术岗</span>
+        <span class="campus-name">AI 技术岗位招聘要求变化</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.blog.csdn.net/2601_95390840/article/details/159802132" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">CSDN 2026年AI岗位薪资揭秘<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.blog.csdn.net/libaiup/article/details/157434531" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">CSDN 大厂AI岗位全攻略<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.blog.csdn.net/trb701012/article/details/157138278" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">CSDN 2026校招薪资报告<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        2026 年 AI 技术岗呈现<strong>薪资高涨、门槛分化</strong>的显著特征：
+        <ul>
+          <li><strong>大模型算法工程师：</strong>年薪 60-90 万+，要求掌握 Transformer、RAG、RLHF 等核心技术，部分岗位需有顶会论文</li>
+          <li><strong>AI 产品经理：</strong>年薪 40-60 万，需理解 AI 技术边界、能设计 Agent 工作流</li>
+          <li><strong>MLOps 工程师：</strong>年薪 35-50 万，负责 AI 模型的部署、监控和运维</li>
+          <li><strong>AI 提示工程师：</strong>新兴岗位，年薪 25-40 万，专注于与大模型高效交互的提示词设计</li>
+          <li><strong>关键变化：</strong>学历门槛有所降低，企业更看重<strong>实际 AI 项目经验</strong>和<strong>大模型工具使用能力</strong>；英语四级 425 分即可达标</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag">非技术岗</span>
+        <span class="campus-name">非技术岗位的 AI 能力要求——"人人都要会 AI"</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://edu.ycwb.com/2026-03/20/content_54019006.htm" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">羊城晚报·羊城派<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.thepaper.cn/newsDetail_forward_32795344" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">澎湃新闻<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://mtoutiao.xdf.cn/cet4-6/202603/15137124.html" target="_blank" rel="noopener" style="color:#991b1b;background:#fef2f2;border-color:#fecaca;">新东方春招分析<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        据对上万条 2026 春招 JD 的分析，非技术岗位出现明确的 AI 技能要求：
+        <ul>
+          <li><strong>运营岗：</strong>"能使用 AI 工具进行内容生成、数据分析、竞品调研"</li>
+          <li><strong>市场营销：</strong>"熟悉 AI 辅助文案创作，能利用 AI 优化投放策略"</li>
+          <li><strong>产品岗：</strong>"了解 AI Agent 设计理念，能与大模型产品对接"</li>
+          <li><strong>人力资源：</strong>"能使用 AI 工具辅助招聘、数据分析、员工服务"</li>
+          <li><strong>法务/财务：</strong>"了解 AI 合规要求，能借助 AI 工具提升合同审查/报表分析效率"</li>
+        </ul>
+        <div style="background:#fef2f2;border-left:3px solid #ef4444;padding:10px 14px;border-radius:0 8px 8px 0;margin-top:8px;font-size:12.5px;color:#991b1b;">
+          <strong>&#x1F4A1; 通俗解读：</strong>以前只有程序员需要懂技术，现在不管你做什么岗位，"会用 AI 工具"正在变成一项基本要求。就像十年前"会用 Office"一样，现在"会用 AI"成了入职的标配技能。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 六、办公软件 AI 动态 ====== -->
+  
+<div class="section" id="office">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e0e7ff;">&#x1F4BB;</div>
+      <h2>办公软件 AI 动态</h2>
+      <span class="section-desc">各大办公平台最新 AI 进展</span>
+    </div>
+
+    <div class="office-highlight">
+      <h3>&#x1F4C8; 市场趋势：AI 办公软件市场突破 380 亿元</h3>
+      <p style="font-size:13px;color:#3730a3;">据艾瑞咨询《2026 年中国 AI 办公应用发展报告》，中国 AI 办公软件市场规模已突破 <strong>380 亿元</strong>，同比增长 <strong>67%</strong>，全球增速领跑。企业级 AI Agent（智能体）正从"功能辅助"进化为能独立执行任务的<strong>"数字员工"</strong>。</p>
+      <div class="sources" style="margin-top:8px;">
+        <a class="source-link" href="https://baijiahao.baidu.com/s?id=1860918092191131964" target="_blank" rel="noopener" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe;">百度百家号（艾瑞报告）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://baijiahao.baidu.com/s?id=1860910788725657876" target="_blank" rel="noopener" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe;">百度百家号（Gartner 报告）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://baijiahao.baidu.com/s?id=1860915429222137834" target="_blank" rel="noopener" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe;">百度百家号（AI办公平台推荐）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">
+        <span class="office-tag">WPS AI</span>
+        <span class="office-name">金山办公 — WPS AI 4.0 + 灵犀智能体升级</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://news.mydrivers.com/1/1106/1106472.htm" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">驱动之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.sohu.com/a/991690142_104421/" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">搜狐<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://3g.diankeji.com/news/66321.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">电科技（券商评级）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="office-body">
+        金山办公在 AI 办公领域持续发力，WPS AI 已从"智能助理"进化为"办公同事"：
+        <ul>
+          <li><strong>WPS AI 4.0：</strong>深度赋能文档、表格、演示三大核心组件，支持长文档智能摘要、数据自动分析、PPT 一键生成</li>
+          <li><strong>灵犀智能体重磅升级：</strong>推出三大智能体（演示制作、数据处理、文档撰写），用户可直接对话完成复杂办公任务</li>
+          <li><strong>国际版 WPS 365：</strong>2026 年初宣布将推出国际版，AI 产品持续迭代</li>
+          <li><strong>市场反馈：</strong>WPS AI 持续创新促进营收增长，10 余家券商给予"买入"评级</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">
+        <span class="office-tag">钉钉</span>
+        <span class="office-name">钉钉 2.0 — 推出 AI 原生工作平台"悟空"</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.10jqka.com.cn/20260317/c675342088.shtml" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">IT之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.aig123.com/sites/7978.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">AIG123 介绍页<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.itbear.com.cn/html/2026-03/1212608.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">ITBear<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="office-body">
+        3 月 17 日，钉钉在 2026 AI 钉钉 2.0 年度新品发布会上推出全新 AI 原生工作平台"悟空"：
+        <ul>
+          <li><strong>AI 原生架构：</strong>基于通义大模型，由任务推理引擎、记忆系统和安全沙箱三大核心构成</li>
+          <li><strong>一站式能力：</strong>支持计划分析、应用开发等复杂任务的自然语言驱动</li>
+          <li><strong>专属安全沙箱：</strong>内置企业级安全隔离，保障数据安全</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">
+        <span class="office-tag">飞书</span>
+        <span class="office-name">飞书发布多款企业级 Agent，一键创建智能伙伴</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-03-19/detail-inhrpfxy1542536.d.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">新浪财经（网易智能）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.ebrun.com/businessnews/20260319/648381.shtml" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">电商报<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="office-body">
+        3 月 19 日，飞书发布多款企业级 Agent 产品，CEO 谢欣表示"希望让每个人都能拥有专属的智能伙伴"：
+        <ul>
+          <li><strong>飞书 aily 平台升级：</strong>用户只需简单创建，便可拥有通晓自己工作上下文的 Agent 伙伴</li>
+          <li><strong>一键创建：</strong>仅用自然语言描述需求，即可自动生成专属 Agent</li>
+          <li><strong>业务系统覆盖：</strong>支持个人智能伙伴与业务系统集成，覆盖全工作场景</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">
+        <span class="office-tag">Microsoft</span>
+        <span class="office-name">微软 Copilot — Workspace 全面 AI 升级</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.microsoft.com/zh-cn/microsoft-365-copilot/personal" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">微软官网<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://k.sina.cn/article_7879848900_1d5acf3c401902u93u.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">DoNews 快讯<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.sohu.com/a/995015998_121885030/" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">搜狐（Gemini + Workspace）<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="office-body">
+        微软持续强化 Copilot 在办公场景的 AI 能力，同时谷歌也在 Gemini + Workspace 上加速追赶：
+        <ul>
+          <li><strong>Microsoft Copilot：</strong>全面覆盖 Word、Excel、PPT、Outlook，个人版和企业版均已上线，支持文档起草、数据分析、演示制作、邮件管理</li>
+          <li><strong>Windows Copilot+ PC：</strong>内置 AI 组件（图像创建、处理、转换），实现端侧 AI 能力</li>
+          <li><strong>Google Gemini：</strong>3 月 10 日上线 Gemini AI 新功能，覆盖 Docs、Sheets、Slides 三大应用，支持文稿起草、表格构建及幻灯片制作</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 七、每周一问 -->
+  
+<div class="section" id="qa">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fef3c7;">&#x2753;</div>
+      <h2>每周一问</h2>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-question">AI 会取代 HR 吗？</div>
+      <div class="qa-answer">
+        <p>答案是：<strong>不会完全取代，但会用 AI 的 HR 会取代不用 AI 的 HR。</strong></p>
+        <br>
+        <p>AI 最擅长的是<strong>重复性、数据量大、规则明确</strong>的工作（如简历筛选、数据统计、流程跟进），而 HR 工作中还有很多需要<strong>人情温度、复杂判断和人际关系处理</strong>的部分（如员工关怀、文化建设、冲突调解），这些是 AI 短期内无法替代的。</p>
+        <br>
+        <p>最可能的工作模式是：<strong>AI 做后台的"苦力活"，HR 腾出时间做更有价值的"人的工作"。</strong></p>
+        <br>
+        <div style="font-size:12px;color:#9a3412;">
+          综合来源：
+          <a href="https://baike.baidu.com/item/2026%E4%BA%BA%E6%89%8D%E8%B6%8B%E5%8A%BF%E6%8A%A5%E5%91%8A/67288596" target="_blank" rel="noopener">BOSS直聘《2026人才趋势报告》</a> &nbsp;|&nbsp;
+          <a href="https://www.beisen.com/res/2326.html" target="_blank" rel="noopener">北森《2026企业AI招聘实测》</a> &nbsp;|&nbsp;
+          <a href="https://m.163.com/dy/article/KJVGOTQ50514R9KQ.html" target="_blank" rel="noopener">网易报道</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    </div>
+  </div>
+</div>
+
+<!-- 移动端侧边栏按钮 -->
+<div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">&#x1F4C5;</div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</div>
+

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI+校招每日资讯简报 | 2026-04-08（星期三）第 002 期</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:#f0f2f5;color:#333;line-height:1.8;min-height:100vh;display:flex;flex-direction:column}
+  a{color:#4f46e5;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .top-bar{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;padding:16px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+  .top-bar h1{font-size:20px;letter-spacing:4px;font-weight:700}
+  .top-bar .sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+  .top-bar .credit{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:2px}
+  .top-bar .credit strong{color:rgba(255,255,255,.7);font-weight:500}
+
+  .layout{display:flex;flex:1}
+
+  /* ===== 左侧日期栏 ===== */
+  .sidebar{width:200px;min-width:200px;background:#fff;border-right:1px solid #e5e7eb;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;overflow-x:hidden;z-index:50;flex-shrink:0}
+  .sidebar::-webkit-scrollbar{width:4px}
+  .sidebar::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:2px}
+  .sidebar-header{padding:16px 14px 10px;border-bottom:1px solid #f0f0f0}
+  .sidebar-header h3{font-size:13px;font-weight:700;color:#374151;letter-spacing:1px}
+  .sidebar-header .sidebar-desc{font-size:11px;color:#9ca3af;margin-top:2px}
+  .sidebar-year{padding:10px 14px 4px;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:.5px;text-transform:uppercase}
+
+  .date-item{display:flex;align-items:center;gap:8px;padding:9px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;user-select:none}
+  .date-item:hover{background:#f5f3ff;border-left-color:#c4b5fd}
+  .date-item.active{background:#ede9fe;border-left-color:#6d28d9}
+  .date-item .date-num{font-size:20px;font-weight:700;color:#1e1b4b;min-width:32px;text-align:center;line-height:1}
+  .date-item .date-info{display:flex;flex-direction:column}
+  .date-item .date-weekday{font-size:12px;font-weight:600;color:#4b5563}
+  .date-item.active .date-weekday{color:#5b21b6}
+  .date-item .date-label{font-size:10px;color:#9ca3af;margin-top:1px}
+  .date-item.active .date-label{color:#7c3aed}
+  .date-item .date-dot{width:6px;height:6px;border-radius:50%;background:#d1d5db;flex-shrink:0}
+  .date-item.active .date-dot{background:#6d28d9;box-shadow:0 0 6px rgba(109,40,217,.4)}
+  .date-item.today .date-num{color:#6d28d9}
+  .date-item.today::after{content:"TODAY";font-size:9px;font-weight:700;color:#fff;background:#6d28d9;padding:1px 5px;border-radius:3px;margin-left:auto}
+
+  /* ===== 右侧主内容 ===== */
+  .main-wrap{flex:1;min-width:0;overflow:hidden}
+  .main-container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+  .toc a{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;transition:all .2s}
+  .toc a:nth-child(1){background:#ede9fe;color:#6d28d9}
+  .toc a:nth-child(2){background:#e0f2fe;color:#0369a1}
+  .toc a:nth-child(3){background:#dcfce7;color:#15803d}
+  .toc a:nth-child(4){background:#fce7f3;color:#be185d}
+  .toc a:nth-child(5){background:#fee2e2;color:#b91c1c}
+  .toc a:nth-child(6){background:#e0e7ff;color:#3730a3}
+  .toc a:nth-child(7){background:#fef3c7;color:#b45309}
+  .toc a:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.12);text-decoration:none}
+
+  .current-date-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6d28d9,#4f46e5);color:#fff;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
+
+  .section{background:#fff;border-radius:14px;padding:28px 28px 24px;margin-bottom:22px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .section-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #f0f0f0}
+  .section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .section-header h2{font-size:18px;font-weight:700;color:#1a1a2e}
+  .section-header .section-desc{font-size:12px;color:#999;margin-left:auto}
+
+  .sources{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:4px;margin-bottom:8px}
+  .source-link{display:inline-flex;align-items:center;gap:3px;font-size:11px;color:#4f46e5;background:#f0f0ff;padding:2px 8px;border-radius:10px;white-space:nowrap;transition:all .15s;border:1px solid #e0e0ff}
+  .source-link:hover{background:#e0e7ff;border-color:#c7d2fe;color:#3730a3;text-decoration:none}
+  .source-link svg{width:10px;height:10px;flex-shrink:0}
+
+  .headline-card{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:transform .2s}
+  .headline-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(109,40,217,.1)}
+  .headline-card .card-title{font-size:15px;font-weight:700;color:#312e81;margin-bottom:6px}
+  .headline-card .card-date{font-size:11px;color:#7c3aed;margin-bottom:4px}
+  .headline-card .card-body{font-size:13.5px;color:#444;margin-bottom:10px}
+  .headline-card .card-explain{font-size:12.5px;color:#5b21b6;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:10px 14px;border-radius:0 8px 8px 0}
+  .headline-card .card-explain strong{color:#4c1d95}
+
+  .hot-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;overflow:hidden;border-radius:10px;border:1px solid #e5e7eb}
+  .hot-table th{background:#1e293b;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:12.5px;letter-spacing:.5px}
+  .hot-table td{padding:11px 14px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+  .hot-table tr:last-child td{border-bottom:none}
+  .hot-table tr:hover td{background:#f8fafc}
+  .hot-table .event-name{font-weight:600;color:#1e293b}
+  .hot-table .table-sources{display:flex;flex-wrap:wrap;gap:3px 6px;margin-top:4px}
+  .hot-table .table-src{font-size:10.5px;color:#4f46e5;background:#f0f0ff;padding:1px 6px;border-radius:8px;white-space:nowrap;border:1px solid #e0e0ff}
+  .hot-table .table-src:hover{background:#e0e7ff;text-decoration:none;color:#3730a3}
+
+  .tool-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #10b981;transition:all .2s}
+  .tool-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .tool-card .tool-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .tool-card .tool-tag{display:inline-block;background:#10b981;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .tool-card .tool-name{font-size:14.5px;font-weight:700;color:#065f46}
+  .tool-card .tool-body{font-size:13px;color:#444;margin-bottom:8px}
+  .tool-card .tool-body ul{padding-left:18px;margin:6px 0}
+  .tool-card .tool-body li{margin-bottom:4px}
+  .tool-card .tool-meaning{font-size:12.5px;color:#047857;background:#ecfdf5;padding:10px 14px;border-radius:8px}
+  .tool-card .tool-meaning strong{color:#065f46}
+
+  .hr-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #a855f7;transition:all .2s}
+  .hr-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .hr-card .hr-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .hr-card .hr-tag{display:inline-block;background:#a855f7;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .hr-card .hr-name{font-size:14.5px;font-weight:700;color:#581c87}
+  .hr-card .hr-body{font-size:13px;color:#444;margin-bottom:8px}
+  .hr-card .hr-body ul,.hr-card .hr-body ol{padding-left:18px;margin:6px 0}
+  .hr-card .hr-body li{margin-bottom:5px}
+  .hr-trend-box{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:1px solid #e9d5ff;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+  .hr-trend-box h3{font-size:14px;font-weight:700;color:#7e22ce;margin-bottom:6px}
+
+  .hr-data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;overflow:hidden;border-radius:8px;border:1px solid #e9d5ff;margin-top:10px}
+  .hr-data-table th{background:#7e22ce;color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:12px}
+  .hr-data-table td{padding:10px 12px;border-bottom:1px solid #f3e8ff;vertical-align:top}
+  .hr-data-table tr:last-child td{border-bottom:none}
+  .hr-data-table tr:hover td{background:#fdf4ff}
+
+  .advice-box{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:10px;padding:16px 20px;font-size:13px;color:#78350f;margin-top:16px}
+  .advice-box strong{color:#92400e}
+
+  .campus-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #ef4444;transition:all .2s}
+  .campus-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .campus-card .campus-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .campus-card .campus-tag{display:inline-block;background:#ef4444;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .campus-card .campus-name{font-size:14.5px;font-weight:700;color:#7f1d1d}
+  .campus-card .campus-body{font-size:13px;color:#444;margin-bottom:8px}
+  .campus-card .campus-body ul,.campus-card .campus-body ol{padding-left:18px;margin:6px 0}
+  .campus-card .campus-body li{margin-bottom:5px}
+
+  .campus-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;overflow:hidden;border-radius:10px;border:1px solid #fecaca;margin:14px 0}
+  .campus-table th{background:#991b1b;color:#fff;padding:10px 10px;text-align:left;font-weight:600;font-size:11.5px}
+  .campus-table td{padding:10px 10px;border-bottom:1px solid #fee2e2;vertical-align:top;line-height:1.7}
+  .campus-table tr:last-child td{border-bottom:none}
+  .campus-table tr:hover td{background:#fef2f2}
+  .campus-table a{color:#4f46e5;font-size:11px}
+
+  .office-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px;border-left:4px solid #6366f1;transition:all .2s}
+  .office-card:hover{border-left-width:6px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+  .office-card .office-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .office-card .office-tag{display:inline-block;background:#6366f1;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600}
+  .office-card .office-name{font-size:14.5px;font-weight:700;color:#312e81}
+  .office-card .office-body{font-size:13px;color:#444;margin-bottom:8px}
+  .office-card .office-body ul{padding-left:18px;margin:6px 0}
+  .office-card .office-body li{margin-bottom:4px}
+  .office-highlight{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+  .office-highlight h3{font-size:14px;font-weight:700;color:#3730a3;margin-bottom:6px}
+
+  .qa-card{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;border-radius:14px;padding:24px;text-align:center}
+  .qa-card .qa-question{font-size:17px;font-weight:700;color:#9a3412;margin-bottom:16px}
+  .qa-card .qa-answer{font-size:14px;color:#7c2d12;text-align:left;line-height:2}
+  .qa-card .qa-answer strong{color:#9a3412}
+
+  .footer{text-align:center;padding:24px 0;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb;margin-top:12px}
+  .footer p{margin-bottom:4px}
+
+  .back-top{position:fixed;bottom:30px;right:30px;width:42px;height:42px;border-radius:50%;background:#302b63;color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);transition:all .2s;opacity:0;pointer-events:none;z-index:90}
+  .back-top.show{opacity:1;pointer-events:auto}
+  .back-top:hover{transform:translateY(-2px);box-shadow:0 5px 18px rgba(0,0,0,.3)}
+
+  /* 加载动画 */
+  .loading{text-align:center;padding:60px 20px;color:#999}
+  .loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #e5e7eb;border-top-color:#6d28d9;border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* 无数据 */
+  .no-data{text-align:center;padding:60px 20px;color:#bbb}
+  .no-data .empty-icon{font-size:48px;margin-bottom:12px;opacity:.5}
+
+  /* 移动端侧边栏 */
+  .sidebar-toggle{display:none;position:fixed;bottom:90px;left:16px;width:44px;height:44px;border-radius:50%;background:#6d28d9;color:#fff;font-size:20px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 14px rgba(109,40,217,.4);z-index:90;transition:all .2s}
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40}
+  .sidebar-overlay.show{display:block}
+
+  @media(max-width:768px){
+    .sidebar{position:fixed;left:-220px;top:56px;height:calc(100vh - 56px);z-index:60;transition:left .3s ease;box-shadow:none}
+    .sidebar.open{left:0;box-shadow:4px 0 20px rgba(0,0,0,.15)}
+    .sidebar-toggle{display:flex}
+    .main-wrap{margin-left:0}
+    .section{padding:18px 16px;border-radius:10px}
+    .main-container{padding:12px 8px 40px}
+  }
+</style>
+
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>AI+校招每日资讯简报</h1>
+  <div class="sub">AI 行业热点 / 人力资源 / 新工具 / 办公软件动态</div>
+  <div class="credit">策划 · 编辑 — <strong>刘小瑜</strong></div>
+</div>
+
+<div class="layout">
+  <!-- 左侧日期栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h3>日期归档</h3>
+      <div class="sidebar-desc">点击查看当日简报</div>
+    </div>
+    <div id="dateList"></div>
+  </aside>
+
+  <!-- 右侧主内容 -->
+  <div class="main-wrap">
+    <div class="main-container" id="mainContent">
+      <div class="section" id="headlines">
+    <div class="section-header">
+      <div class="section-icon" style="background:#ede9fe;">&#x1F525;</div>
+      <h2>今日头条</h2>
+      <span class="section-desc">3 条重磅新闻</span>
+    </div>
+    <div class="headline-card">
+      <div class="card-title">1. 十部门联合发布《人工智能科技伦理审查与服务办法（试行）》</div>
+      <div class="card-date">&#x1F4C5; 2026-04-08</div>
+      <div class="sources">
+        <a class="source-link" href="https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2026/art_c5039010f5d24e1593152a9355f9c51c.html" target="_blank" rel="noopener">工信部<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="http://www.xbxxb.com/2026/0408/1112390.html" target="_blank" rel="noopener">经济参考报<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.donews.com/news/detail/8/6502063.html" target="_blank" rel="noopener">DoNews<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">工业和信息化部等十部门联合印发《人工智能科技伦理审查与服务办法（试行）》（工信部联科〔2026〕75号）。该办法明确了AI伦理审查的适用范围、审查主体、审查程序及监管要求，涵盖智能产品研发、算法训练、数据采集等全链条环节。参与联合发文的部门包括国家发改委、教育部、科技部、农业农村部、国家卫健委、央行、国家网信办、中科院和中国科协。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>国家首次为 AI 伦理审查制定"操作手册"——从研发到上线，每一个环节都要过"伦理关"，确保 AI 不做坏事、不伤害人。</div>
+    </div>
+    <div class="headline-card">
+      <div class="card-title">2. Anthropic 联合 12 家科技巨头推出 AI 网络安全模型 Claude Mythos Preview</div>
+      <div class="card-date">&#x1F4C5; 2026-04-08</div>
+      <div class="sources">
+        <a class="source-link" href="https://www.donews.com/news/detail/8/6501818.html" target="_blank" rel="noopener">DoNews<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.163.com/dy/article/KPVRKITD0512B07B.html" target="_blank" rel="noopener">网易<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">4月7日，Anthropic 启动"Project Glasswing"项目，联合苹果、英伟达、微软、谷歌、AWS等12家科技机构，推出专用于网络防御的AI模型 Claude Mythos Preview。该模型已自主发现并修复了多个零日漏洞（zero-day vulnerability），网络安全ETF因此连涨6日。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>当大多数 AI 还在学习"怎么生成内容"时，Anthropic 已经让 AI 学会了"抓黑客"——自动发现系统漏洞并修复，相当于给互联网请了一个7x24小时不打盹的安全卫士。</div>
+    </div>
+    <div class="headline-card">
+      <div class="card-title">3. DeepSeek 大升级：上线"快速模式"与"专家模式"，完整版 V4 已在路上</div>
+      <div class="card-date">&#x1F4C5; 2026-04-08</div>
+      <div class="sources">
+        <a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-04-08/detail-inhttxke2923543.d.html" target="_blank" rel="noopener">雷科技/新浪<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://m.chinaz.com/ainews/26230.shtml" target="_blank" rel="noopener">站长之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="card-body">DeepSeek 宣布上线"快速模式"与"专家模式"双引擎架构。快速模式主打日常对话效率，专家模式面向复杂推理任务。由梁文锋团队主导研发的多模态大模型 DeepSeek-V4 预计本月正式发布，在长上下文处理、推理效率和国产适配等方面将有突破性升级。</div>
+      <div class="card-explain"><strong>&#x1F4A1; 通俗解读：</strong>DeepSeek 正在"量变到质变"——快问快答用快速模式，遇到难题切换专家模式。而即将到来的 V4 版本被业内视为国产大模型的新里程碑。</div>
+    </div>
+  </div>
+
+  <div class="section" id="hotspot">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e0f2fe;">&#x1F4CA;</div>
+      <h2>今日 AI 行业热点速览</h2>
+      <span class="section-desc">6 条动态</span>
+    </div>
+    <table class="hot-table">
+      <tr><th style="width:28%">事件</th><th style="width:10%">日期</th><th style="width:30%">一句话解读</th><th style="width:32%">来源</th></tr>
+      <tr><td><span class="event-name">WPS灵犀登顶行业级智能体TOP100办公领域第一</span></td><td>4月7日</td><td>超越飞书钉钉，AI融入办公软件的结果兑现</td><td><div class="table-sources"><a class="table-src" href="https://m.sohu.com/a/1006446680_121321723" target="_blank">搜狐</a><a class="table-src" href="https://news.qq.com/rain/a/20260407A04Y2Z00" target="_blank">腾讯新闻</a></div></td></tr>
+      <tr><td><span class="event-name">中国AI产业联盟第十七次全会在武汉开幕</span></td><td>4月8日</td><td>1场全会+10余场分会，聚焦智能原生时代</td><td><div class="table-sources"><a class="table-src" href="https://view.inews.qq.com/a/20260407A04W1600" target="_blank">腾讯新闻</a></div></td></tr>
+      <tr><td><span class="event-name">AI人工智能ETF涨超4%，中际旭创涨6%</span></td><td>4月8日</td><td>美伊停火提振全球风险偏好，科技板块强势回归</td><td><div class="table-sources"><a class="table-src" href="http://caifuhao.eastmoney.com/news/20260408100437407910490" target="_blank">东方财富</a></div></td></tr>
+      <tr><td><span class="event-name">苹果研究团队发表SQUIRE工具论文</span></td><td>4月7日</td><td>通过中间表示技术解决AI生成界面一致性难题</td><td><div class="table-sources"><a class="table-src" href="https://m.163.com/dy/article/KPVO36UG0511B8LM.html" target="_blank">IT之家/网易</a></div></td></tr>
+      <tr><td><span class="event-name">AGI HORIZON全球AI大会东京定档</span></td><td>4月8日</td><td>WaytoAGI主办，聚焦AI如何真切改变世界</td><td><div class="table-sources"><a class="table-src" href="https://view.inews.qq.com/wxn/20260313A03XUH00" target="_blank">腾讯新闻</a></div></td></tr>
+      <tr><td><span class="event-name">京津冀算力算法大赛启动</span></td><td>4月6日</td><td>深入实施"人工智能+"行动，发挥廊坊算力优势</td><td><div class="table-sources"><a class="table-src" href="https://m.163.com/news/article/KPQSOCJH04159CNM.html" target="_blank">河北日报/网易</a></div></td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="office">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e0e7ff;">&#x1F4BB;</div>
+      <h2>办公软件 AI 动态</h2>
+      <span class="section-desc">3 条动态</span>
+    </div>
+    <div class="office-highlight">
+      <h3>&#x1F4C8; 重磅：WPS 灵犀登顶"2026行业级智能体TOP100"办公领域第一</h3>
+      <p class="sources"><a class="source-link" href="https://m.sohu.com/a/1006446680_121321723" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">搜狐科技<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a><a class="source-link" href="https://news.qq.com/rain/a/20260407A04Y2Z00" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">后厂村/腾讯新闻<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></p>
+      <p style="font-size:13px;color:#3730a3;">《互联网周刊》联合德本咨询（DBC）发布《2026行业级智能体TOP100》权威榜单，金山办公旗下 WPS 灵犀凭借卓越的 AI 办公能力，位列 <strong>办公领域第一</strong>，超越飞书智能伙伴和钉钉AI助手。分析指出，AI 办公赛道已从"聊天炫技"的狂欢，步入"落地干活"的深水区，WPS 灵犀的核心优势在于 AI 深度融入文档、表格、演示三大核心组件。</p>
+    </div>
+    <div class="office-card">
+      <div class="office-header"><span class="office-tag" style="background:#2563eb">钉钉</span><span class="office-name">AI 原生工作平台"悟空"持续升级</span></div>
+      <div class="sources"><a class="source-link" href="https://m.10jqka.com.cn/20260317/c675342088.shtml" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">IT之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></div>
+      <div class="office-body"><p>基于通义大模型，由任务推理引擎、记忆系统和安全沙箱三大核心构成，支持自然语言驱动的复杂任务自动化。业内评价：钉钉正在从"连接工具"进化为"智能工作操作系统"。</p></div>
+    </div>
+    <div class="office-card">
+      <div class="office-header"><span class="office-tag" style="background:#0ea5e9">飞书</span><span class="office-name">企业级 Agent 生态持续扩展</span></div>
+      <div class="sources"><a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-03-19/detail-inhrpfxy1542536.d.html" target="_blank" rel="noopener" style="color:#312e81;background:#eef2ff;border-color:#c7d2fe;">新浪财经<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></div>
+      <div class="office-body"><p>aily 平台升级让用户只需简单创建便可拥有通晓自己工作上下文的 Agent 伙伴。飞书持续在AI办公协作领域发力，与 WPS 灵犀、钉钉形成三足鼎立格局。</p></div>
+    </div>
+  </div>
+
+  <div class="section" id="campus">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fee2e2;">&#x1F393;</div>
+      <h2>校园招聘资讯</h2>
+      <span class="section-desc">4 月 8 日当天宣讲会与招聘动态</span>
+    </div>
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag" style="background:#dc2626">宣讲会</span>
+        <span class="campus-name">学而思 2026 春季校园招聘 - 中国人民大学站</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.sohu.com/a/1006398052_121106842" target="_blank" rel="noopener">搜狐<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        <ul>
+          <li><strong>时间：</strong>4月8日（周三）18:00</li>
+          <li><strong>地点：</strong>中国人民大学学生就业创业指导中心（北区食堂）</li>
+          <li><strong>招聘方向：</strong>AI相关岗位占比持续提升，包括算法工程师、AI产品经理等</li>
+        </ul>
+      </div>
+    </div>
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag" style="background:#7c3aed">空中宣讲</span>
+        <span class="campus-name">科大国盾量子 2026 春季校园招聘空中宣讲会</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="http://job.hust.edu.cn/kzxjh1/2390586.htm" target="_blank" rel="noopener">华中科技大学就业网<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        <ul>
+          <li><strong>时间：</strong>4月8日 14:00-15:30</li>
+          <li><strong>形式：</strong>线上空中宣讲会</li>
+          <li><strong>亮点：</strong>量子技术+AI交叉领域，前沿科技方向</li>
+        </ul>
+      </div>
+    </div>
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag" style="background:#059669">线下招聘</span>
+        <span class="campus-name">内蒙古森工集团 2026 春季校园招聘</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.sohu.com/a/1006644742_121956425" target="_blank" rel="noopener">搜狐<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        <ul>
+          <li><strong>时间：</strong>4月8日 08:30-11:00</li>
+          <li><strong>地点：</strong>内蒙古大学玉泉校区</li>
+          <li><strong>岗位：</strong>信息技术类、管理类等多岗位</li>
+        </ul>
+      </div>
+    </div>
+    <div class="campus-card">
+      <div class="campus-header">
+        <span class="campus-tag" style="background:#2563eb">持续招聘</span>
+        <span class="campus-name">更多春招信息汇总</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://m.cq.bendibao.com/job/162148.shtm" target="_blank" rel="noopener">本地宝<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+        <a class="source-link" href="https://www.sohu.com/a/1006492465_121124292" target="_blank" rel="noopener">搜狐<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a>
+      </div>
+      <div class="campus-body">
+        <ul>
+          <li><strong>京东 2026 校招春招补录：</strong>4月30日截止，多个技术岗位开放</li>
+          <li><strong>广发银行深圳分行春招：</strong>4月20日截止，金融科技方向</li>
+          <li><strong>天津开放大学招聘：</strong>4月8日起打印笔试准考证</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="daily-tip">
+    <div class="section-header">
+      <div class="section-icon" style="background:#dcfce7;">&#x1F4A1;</div>
+      <h2>每日 AI 新工具 / 新功能 / 新技巧</h2>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><span class="tool-tag" style="background:#059669">Claude Mythos Preview</span><span class="tool-name">Anthropic 推出 AI 网络安全防御模型</span></div>
+      <div class="sources"><a class="source-link" href="https://www.donews.com/news/detail/8/6501818.html" target="_blank">DoNews<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></div>
+      <div class="tool-body"><ul>
+        <li>Anthropic 联合苹果、英伟达、微软等12家巨头共同研发</li>
+        <li>专用于网络防御，已自主发现并修复多个零日漏洞</li>
+        <li>目前仅限合作企业试用，未来可能开放更多接入渠道</li>
+      </ul></div>
+      <div class="tool-meaning"><strong>&#x1F3AF; 意义：</strong>AI 从"生成内容"走向"守护安全"，网络安全行业迎来新范式。</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><span class="tool-tag" style="background:#0891b2">DeepSeek 双模式</span><span class="tool-name">快速模式 + 专家模式，灵活切换</span></div>
+      <div class="sources"><a class="source-link" href="https://finance.sina.cn/stock/jdts/2026-04-08/detail-inhttxke2923543.d.html" target="_blank">雷科技<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></div>
+      <div class="tool-body"><ul>
+        <li><strong>快速模式：</strong>日常对话、简单问答，响应速度更快</li>
+        <li><strong>专家模式：</strong>复杂推理、深度分析、代码编写等高难度任务</li>
+        <li>完整版 V4 大模型预计本月发布，多模态能力全面提升</li>
+      </ul></div>
+      <div class="tool-meaning"><strong>&#x1F3AF; 适合谁：</strong>日常用户用快速模式提升效率，开发者和研究人员用专家模式攻坚难题。双模式设计让一个工具满足不同层次需求。</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><span class="tool-tag" style="background:#7c3aed">苹果 SQUIRE</span><span class="tool-name">AI 生成用户界面的新突破</span></div>
+      <div class="sources"><a class="source-link" href="https://m.163.com/dy/article/KPVO36UG0511B8LM.html" target="_blank">IT之家<svg viewBox="0 0 12 12" fill="currentColor"><path d="M9 2h-2v1h1.3L5 6.3 3.7 5 3 5.7 5 7.7l4-4V5h1V2z"/></svg></a></div>
+      <div class="tool-body"><ul>
+        <li>苹果研究团队发表论文，提出"中间表示"技术</li>
+        <li>解决 AI 生成 UI 时布局不一致、元素错位的老大难问题</li>
+        <li>让 AI 从"生成粗糙草图"进化到"生成可用的产品界面"</li>
+      </ul></div>
+      <div class="tool-meaning"><strong>&#x1F3AF; 意义：</strong>UI 设计自动化迎来关键技术突破，未来设计师可以用自然语言直接生成可上线的产品界面。</div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<!-- 移动端侧边栏按钮 -->
+<div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">&#x1F4C5;</div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</div>
+
